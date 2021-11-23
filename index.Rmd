@@ -102,7 +102,7 @@ scatterplot_chart
 
 The chart below is a map that shows the geographic distribution of the average Black prison admission rate per state in 2016. This chart was included to identify possible patterns in the regions based on the average prison admission rates for the Black population. 
 
-From the map, it can be seen that the regions with the highest Black prison admission rate on average were in the midwest and southwest. The regions with the lowest Black prison admission rate on average were in the southeast and the west of the U.S. 
+From the map, it can be seen that the regions with the highest Black prison admission rate on average were in the midwest and southwest. The regions with the lowest Black prison admission rate on average were in the southeast and west. 
 
 ```{r echo=FALSE}
 

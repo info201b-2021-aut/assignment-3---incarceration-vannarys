@@ -1,0 +1,112 @@
+---
+title: "Incarceration Data Visualization"
+author: "Vannary Sou"
+date: "11/20/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r include=FALSE}
+
+library(dplyr)
+library(tidyverse)
+library(ggplot2)
+library(lintr)
+library(maps)
+source("analysis.R")
+
+```
+
+## Introduction
+
+This report will analyze data from [Vera Institute's dataset on incarceration trends](https://raw.githubusercontent.com/vera-institute/incarceration-trends/master/incarceration_trends.csv). The incarceration trends dataset includes county and jurisdiction level data from the years 1970-2018 and prison data from 1983-2016 in the U.S. 
+
+For my analysis, the problem domain that I will be focusing on is the prison admission rate based on race and sex (male or female) overtime in various parts of the U.S. as well as the country as a whole. The measures of incarceration I have chosen to analyze are: 
+
+* Year 
+  * year
+  
+* State 
+  * state
+  
+* Total prison admission rate 
+  * total_prison_adm_rate
+  
+* Prison admission rate by race on average
+  * aapi_prison_adm_rate
+  * black_prison_adm_rate
+  * latinx_prison_adm_rate
+  * native_prison_adm_rate
+  * white_prison_adm_rate
+  
+* Prison admission rate by sex on average
+  * female_prison_adm_rate
+  * male_prison_adm_rate
+
+I chose to analyze these variables to identify trends based on the admission rate for different groups of people in various parts of the U.S. throughout history. 
+
+## Summary Statistics 
+
+[Vera Institute's dataset on incarceration trends](https://raw.githubusercontent.com/vera-institute/incarceration-trends/master/incarceration_trends.csv) includes data on the total prison admission rate in the U.S. as well as the prison admission rate by race and sex in each state and year. 
+
+The race with the highest prison admission rate on average was the black population with an average admission rate of **`r (highest_prison_adm_rate_race)`**. The race with the lowest prison admission rate on average was the AAPI population with an average admission rate of **`r (lowest_prison_adm_rate_race)`**. 
+
+The sex with the highest prison admission rate on average was the male population with an average admission rate of **`r (highest_prison_adm_rate_sex)`**. The sex with the lowest prison admission rate on average was the female population with an average admission rate of **`r (lowest_prison_adm_rate_sex)`**.
+
+The admission rate difference between the race with the highest and lowest prison admission rate on average was **`r (adm_rate_race_difference)`**. The admission rate difference between the sex with the highest and lowest prison admission rate on average was **`r (adm_rate_sex_difference)`**. 
+
+```{r include=FALSE}
+
+highest_prison_adm_rate_race
+lowest_prison_adm_rate_race
+
+highest_prison_adm_rate_sex
+lowest_prison_adm_rate_sex
+
+adm_rate_race_difference
+adm_rate_sex_difference
+
+```
+
+## Time Trend Charts
+
+The chart below shows the average prison admission rate by race over time throughout the 1990s to 2010s. This chart was included in order to visualize data trends with the average prison rate for each race over time. The patterns that emerged show that the average prison admission rate for the Black population was significantly and consistently higher over time compared to other races. 
+
+The Latinx population can be seen to have relatively consistent admission rates with the exception of a high spike in prison admissions rates in the late 1990s to mid 2000s. In contrast, the Native population had an increase in prison admissions in the early 2000s that stayed relatively similar afterwards. 
+
+It can also be seen from the chart that the AAPI population tend to have a pattern of low prison admission rates on average, with highly consistent rates over time. Lastly, the White population has a consistently low prison admission rate with a small but steady increase starting from the 2000s. 
+
+```{r echo=FALSE}
+
+time_chart
+
+```
+
+## Variable Comparison Chart
+
+The chart below visualizes the ratio of the average prison admission rate in 2016 for the Black and White race. This chart was included to compare and show how the two variables (white and black average prison admission rate) relate to each other. The chart shows the ratio of average prison admission rates in 2016 since it is the most recent year in the dataset with values for prison admission rates. 
+
+The patterns that emerged from the variable comparison chart show that there is a low positive correlation between the ratio of Black and White prison admission rates on average in the year 2016. A low positive correlation in this case would mean that as the Black average prison admission rate goes up, so does the White average prison admission rate. However, since the data points are more spread out, the correlation between these variables isn't as strong. 
+
+```{r echo=FALSE}
+
+scatterplot_chart
+
+```
+
+
+## Map
+
+The chart below is a map that shows the geographic distribution of the average Black prison admission rate per state in 2016. This chart was included to identify possible patterns in the regions based on the average prison admission rates for the Black population. 
+
+From the map, it can be seen that the regions with the highest Black prison admission rate on average were in the midwest and southwest. The regions with the lowest Black prison admission rate on average were in the southeast and the west of the U.S. 
+
+```{r echo=FALSE}
+
+map_chart
+
+```
+

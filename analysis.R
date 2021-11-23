@@ -1,6 +1,5 @@
 # load data
 library(dplyr)
-<<<<<<< HEAD
 library(tidyverse)
 library(ggplot2)
 library(lintr)
@@ -191,9 +190,3 @@ map_chart <- ggplot(state_shape) +
   labs( title = "Average Black Prison Admission Rate Per State in 2016",
         fill = "Average Black Prison Admission Rate") +
   blank_theme 
-=======
-read.csv('https://raw.githubusercontent.com/vera-institute/incarceration-trends/master/incarceration_trends.csv')
-
-# summary statistics
-
->>>>>>> 2d9c57e3d580729e025283fb55ae09f977698fca
